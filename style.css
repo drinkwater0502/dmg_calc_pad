@@ -1,0 +1,185 @@
+body {
+    background-image: url('./images/horizon.jpg');
+    color:white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* use this later!!!!!!!!
+https://www.schemecolor.com/deep-pond.php */
+
+.main-container {
+    display: grid;
+    grid-template-areas:
+    "gi1 gi4"
+    "gi2 gi4"
+    "gi3 gi4";
+    gap: 5px;
+    grid-template-columns: 1150px 1fr;
+    grid-template-rows: auto 150px 400px auto;
+     
+}
+
+.grid-item-1 {
+    grid-area: gi1;
+    border: 3px solid pink;
+    padding: 10px;
+}
+
+.grid-item-2 {
+    grid-area: gi2;
+    padding: 10px;
+}
+
+.grid-item-3 {
+    grid-area: gi3;
+    padding: 10px;
+}
+
+.grid-item-4 {
+    grid-area: gi4;
+}
+
+.grid-item-5 {
+    grid-area: gi5;
+}
+
+.combo3 {
+    max-width: 90px;
+}
+
+.combo4 {
+    max-width: 120px;
+}
+
+.combo5 {
+    max-width: 150px;
+}
+
+.comborow {
+    max-width: 180px;
+}
+
+.combononrow {
+    max-width: 120px;
+}
+
+
+.combol {
+    max-width: 90px;
+}
+
+.combocross {
+    max-width: 90px;
+}
+
+.combovdp {
+    max-width: 90px;
+}
+
+.comboheartl {
+    max-width: 90px;
+}
+
+.comboheartvdp {
+    max-width: 90px;
+}
+
+ul {
+    list-style: none;
+    overflow: auto;
+}
+
+.HUL {
+    /* display: grid;
+    grid-template-columns: repeat(20, 1fr); */
+    list-style: none;
+    max-width: 1000px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.HUL > li {
+    display:inline-block;
+}
+
+li > a {
+    display:block
+}
+
+li {
+    padding:5px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%
+}
+
+th,td {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #7CA5B8;
+    word-wrap: break-word;
+}
+
+td {
+    text-align: center;
+}
+
+h1, h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#awakenings-list {
+    min-height: 67px;
+}
+
+#combos-list-main {
+    min-height: 130px;
+}
+
+#combos-list-sub {
+    min-height: 130px;
+}
+
+.dmgcalcbtn {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.comboblob {
+    max-width:180px;
+}
+
+.blobby {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    margin: 10px
+}
+
+#tdblob {
+    text-align:unset;
+    display: flex;
+    min-width: 368px;;
+    min-height: 100px;
+}
+
+.spaceLeft {
+    margin-left: 100px
+}
+
+h2 {
+    padding-top: 5px
+}
+
+#enhanceLabel {
+    margin-left: 20px
+}
+
+#comboError {
+    margin-left: 20px
+}

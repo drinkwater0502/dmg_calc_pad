@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Inter:wght@300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <!-- <form> -->
+        <div class="main-container"">
+            <div class="grid-item grid-item-1">
+                <label for="ATK">Enter ATK: </label>
+                <input type="text" id="ATK" name="ATK">
+                <label class ="spaceLeft" for="LM">Enter Leader Multiplier: </label>
+                <input type="text" id="LM" name="LM">
+                <label class ="spaceLeft" for="HM">Enter Helper Multiplier: </label>
+                <input type="text" id="HM" name="HM">
+                <br>
+                <label for="SPIKE">Enter Spike Muliplier (optional): </label>
+                <input type="text" id="SPIKE" name="SPIKE">
+                <label class ="spaceLeft" for="totalCombos">Total Combos:  </label>
+                <input type="number" id="totalCombos" name="totalCombos" min="1" step="1" size="4" value="0">
+                <br>
+                <a>Awakenings: </a>
+                <ul class="HUL" id="awakenings-list"></ul>
+                <a>Main Attribute Combos: </a>
+                <ul class="HUL" id="combos-list-main"></ul>
+                <a>Sub Attribute Combos: </a>
+                <ul class="HUL" id="combos-list-sub"></ul>
+                <button class="dmgcalcbtn" onclick="calculateDmg()">Calculate Damage</button>
+            </div>
+            <div class="grid-item grid-item-2">
+                <h2>Add Personal Awakenings (Click to add)</h2>
+                <input type="image" src="./images/10c.png" onclick="addAwakening('./images/10c.png')"/>
+                <input type="image" src="./images/7c.png" onclick="addAwakening('./images/7c.png')"/>
+                <input type="image" src="./images/blob.png" onclick="addAwakening('./images/blob.png')"/>
+                <input type="image" src="./images/piercevoid.png" onclick="addAwakening('./images/piercevoid.png')"/>
+                <input type="image" src="./images/blind.png" onclick="addAwakening('./images/blind.png')"/>
+                <input type="image" src="./images/tpaplus.png" onclick="addAwakening('./images/tpaplus.png')"/>
+                <input type="image" src="./images/tpa.png" onclick="addAwakening('./images/tpa.png')"/>
+                <input type="image" src="./images/unlock.png" onclick="addAwakening('./images/unlock.png')"/>
+                <input type="image" src="./images/3col.png" onclick="addAwakening('./images/3col.png')"/>
+                <input type="image" src="./images/4col.png" onclick="addAwakening('./images/4col.png')"/>
+                <input type="image" src="./images/5col.png" onclick="addAwakening('./images/5col.png')"/>
+                <input type="image" src="./images/50.png" onclick="addAwakening('./images/50.png')"/>
+                <input type="image" src="./images/80.png" onclick="addAwakening('./images/80.png')"/>
+                <input type="image" src="./images/heartl.png" onclick="addAwakening('./images/heartl.png')"/>
+                <input type="image" src="./images/heartvdp.png" onclick="addAwakening('./images/heartvdp.png')"/>
+
+                <br>
+                <h2>Add Team Awakenings (Click to add)</h2>
+                <input type="image" src="./images/firerow.png" onclick="addAwakening('./images/firerow.png')"/>
+                <input type="image" src="./images/waterrow.png" onclick="addAwakening('./images/waterrow.png')"/>
+                <input type="image" src="./images/greenrow.png" onclick="addAwakening('./images/greenrow.png')"/>
+                <input type="image" src="./images/lightrow.png" onclick="addAwakening('./images/lightrow.png')"/>
+                <input type="image" src="./images/darkrow.png" onclick="addAwakening('./images/darkrow.png')"/>
+                <input type="image" src="./images/firecombo.png" onclick="addAwakening('./images/firecombo.png')"/>
+                <input type="image" src="./images/watercombo.png" onclick="addAwakening('./images/watercombo.png')"/>
+                <input type="image" src="./images/greencombo.png" onclick="addAwakening('./images/greencombo.png')"/>
+                <input type="image" src="./images/lightcombo.png" onclick="addAwakening('./images/lightcombo.png')"/>
+                <input type="image" src="./images/darkcombo.png" onclick="addAwakening('./images/darkcombo.png')"/>
+            </div>
+            <div class="grid-item grid-item-3">
+            <h2>Add combos (Click to add)</h2>
+            <input type="radio" id="main-radio" checked="checked" name="radioname">
+            <label for="main-radio">Main Attribute</label>
+            <input type="radio" id="sub-radio" name="radioname">
+            <label for="main-radio">Sub Attribute</label>
+            <a id="enhanceLabel"># of </a>
+            <img  type="image" src="./images/enhancewater.png">
+            <input type="number" id="numEnhanced" size="4" value="0" min="0">
+            <a id="comboError"></a>
+            <table>
+                <tr>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6 (row)</th>
+                    <th>6 (not row)</th>
+                    <th>L</th>
+                </tr>
+                <tr>
+                    <td><input class="combo3" type="image" src="./images/orbs/3.PNG" onclick="addCombo('threec')"/></td>
+                    <td><input class="combo4" type="image" src="./images/orbs/4.PNG" onclick="addCombo('fourc')"/></td>
+                    <td><input class="combo5" type="image" src="./images/orbs/5.PNG" onclick="addCombo('fivec')"/></td>
+                    <td><input class="comborow" type="image" src="./images/orbs/row.PNG" onclick="addCombo('row')"/></td>
+                    <td><input class="combononrow" type="image" src="./images/orbs/nonrowtrans.png" onclick="addCombo('nonrow')"/></td>
+                    <td><input class="combol" type="image" src="./images/orbs/ltrans.png" onclick="addCombo('l')"/></td>
+                </tr>
+                <tr>
+                    <th>Cross</th>
+                    <th>VDP</th>
+                    <th>Heart L</th>
+                    <th>Heart 3x3</th>
+                    <th colspan="2">Blob / 7+</th>
+                </tr>
+                <tr>
+                    <td><input class="combocross" type="image" src="./images/orbs/crosstrans.png" onclick="addCombo('cross')"/></td>
+                    <td><input class="combovdp" type="image" src="./images/orbs/vdp.PNG" onclick="addCombo('vdp')"/></td>
+                    <td><input class="comboheartl" type="image" src="./images/orbs/heartltrans.png" onclick="addCombo('heartl')"/></td>
+                    <td><input class="comboheartvdp" type="image" src="./images/orbs/heartvdp.PNG" onclick="addCombo('heartvdp')"/></td>
+                    <td colspan="2" id="tdblob"><div class="blobby"><input class="comboblob" type="image" src="./images/orbs/blob.PNG" onclick="addCombo('blob')"/></div>
+                    <div class="blobby"><label for="bloborbnumber"># of orbs: </label><input type="number" id="bloborbnumber" step="1" size="1" min="7" value="7">
+                    <label for="blobrownumber"># of rows: </label><input type="number" id="blobrownumber" step="1" size="1" min="0" value="0"></div></td>
+                </tr>
+            </table>
+            </div>
+            <div class="grid-item grid-item-4">
+                <a>Calculation</a>
+                <p id="calctext"></p>
+                <ul id="idiotCheck"></ul>
+            </div>
+        </div>
+    <!-- </form>  -->
+</body>
+</html>
