@@ -75,6 +75,8 @@ function addCombo (myCombo) {
     comboObj["numRows"] = rowsValue
     comboObj["numEnhancedOrbs"] = numEnhancedOrbs
     comboObj["msAttr"] = msAttr
+    comboObj["damage"] = 0
+
 
     if (validateCombo(comboObj) == false) {
         return
@@ -272,8 +274,38 @@ function updateComboLists() {
     }
 }
 
+function baseComboDmg(cardATK) {
+    for (let i=0; i<objArray.length; i++) {
+        baseDmg = cardATK * (1 + (0.25 * (objArray[i]["numOfOrbs"] - 3)))
+        objArray[i]["damage"] = baseDmg
+
+        if (objArray[i]["type"] == "fourc" && awakeningsArray.includes('./images/tpa.png')) {
+            numTPA = getOccurrence(awakeningsArray, './images/tpa.png')
+            objArray[i]["damage"] = objArray[i]["damage"] * (1.7 ** numTPA)
+        }
+        if (objArray[i]["type"] == "fourc" && awakeningsArray.includes('./images/tpaplus.png')) {
+            numTPAplus = getOccurrence(awakeningsArray, './images/tpaplus.png')
+            objArray[i]["damage"] = objArray[i]["damage"] * (2.89 ** numTPAplus)
+        }
+        if (objArray[i]["type"] == "vdp" && awakeningsArray.includes('./images/piercevoid.png')) {
+            numVDP = getOccurrence(awakeningsArray, './images/piercevoid.png')
+            objArray[i]["damage"] = objArray[i]["damage"] * (2.5 ** numVDP)
+        }
+        if (objArray[i]["type"] == "cross" && awakeningsArray.includes('./images/blind.png')) {
+            numCross = getOccurrence(awakeningsArray, './images/blind.png')
+            objArray[i]["damage"] = objArray[i]["damage"] * (2.5 ** numCross)
+        }
+        if (objArray[i]["type"] == "l" && awakeningsArray.includes('./images/unlock.png')) {
+            numL = getOccurrence(awakeningsArray, './images/unlock.png')
+            objArray[i]["damage"] = objArray[i]["damage"] * (1.5 ** numL)
+        }
+        objArray[i]["damage"] = Math.ceil(objArray[i]["damage"]) //important
+    }
+}
+
 function calculateDmg() {
     if (validateInputs() == false) {
         return
     }
+    baseComboDmg(Number(document.getElementById('ATK').value))
 }
